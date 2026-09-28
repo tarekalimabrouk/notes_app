@@ -12,5 +12,5 @@ final class AddNoteCubitSuccess extends AddNoteCubitState {}
 final class AddNoteCubitFailure extends AddNoteCubitState {
   final String errMessage;
 
-  AddNoteCubitFailure( this.errMessage);
+  AddNoteCubitFailure(this.errMessage);
 }
