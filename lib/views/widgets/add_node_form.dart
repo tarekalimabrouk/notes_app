@@ -43,8 +43,9 @@ class _AddNoteBottomSheetState extends State<AddNoteForm> {
                 hint: 'content',
                 maxLines: 5,
               ),
+              const SizedBox(height: 35),
             ColorsListView(),
-              const SizedBox(height: 50),
+              const SizedBox(height: 35),
               BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
                 builder: (context, state) {
                   return CustomButton(
