@@ -43,23 +43,28 @@ class _AddNoteBottomSheetState extends State<AddNoteForm> {
                 maxLines: 5,
               ),
               const SizedBox(height: 50),
-              CustomButton(
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    var notModel = NoteModel(
-                      titel: titel!,
-                      subTitel: subTitel!,
-                      date: DateTime.now().toString(),
-                      color: Colors.blue.value,
-                    );
-                    BlocProvider.of<AddNoteCubitCubit>(
-                      context,
-                    ).addNote(notModel);
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
-                  }
+              BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
+                builder: (context, state) {
+                  return CustomButton(
+                    isLoding: state is AddNoteCubitLoding? true:false,
+                    onTap: () {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        var notModel = NoteModel(
+                          titel: titel!,
+                          subTitel: subTitel!,
+                          date: DateTime.now().toString(),
+                          color: Colors.blue.value,
+                        );
+                        BlocProvider.of<AddNoteCubitCubit>(
+                          context,
+                        ).addNote(notModel);
+                      } else {
+                        autovalidateMode = AutovalidateMode.always;
+                        setState(() {});
+                      }
+                    },
+                  );
                 },
               ),
               const SizedBox(height: 16),

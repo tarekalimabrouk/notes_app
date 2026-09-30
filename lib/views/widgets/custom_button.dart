@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes/views/widgets/custom_file.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({this.onTap, super.key});
+  const CustomButton({this.onTap, super.key,  this.isLoding=false});
+  final bool isLoding;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
         ),
 
         child: Center(
-          child: Text(
+          child:isLoding?const CircularProgressIndicator(color: Colors.black,): const Text(
             'Add',
             style: TextStyle(
               color: Colors.black,
