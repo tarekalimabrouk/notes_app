@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/views/edit_note_view.dart';
 import 'package:intl/intl.dart';
+
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({super.key, required this.note});
   final NoteModel note;
@@ -45,7 +46,9 @@ class CustomNoteItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete();
+                },
                 icon: const FaIcon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,
@@ -55,9 +58,11 @@ class CustomNoteItem extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 30),
-             
-                child: Text(
-  DateFormat('dd/MM/yyyy hh:mm a').format(DateTime.parse(note.date)),
+
+              child: Text(
+                DateFormat(
+                  'dd/MM/yyyy hh:mm a',
+                ).format(DateTime.parse(note.date)),
                 style: TextStyle(
                   color: Colors.black.withValues(alpha: .5),
                   fontSize: 18,
